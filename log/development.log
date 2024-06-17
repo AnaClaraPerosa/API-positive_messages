@@ -1,0 +1,603 @@
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-06-11 18:02:14.947536', '2024-06-11 18:02:14.947539') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTasks (20240611180156)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar, "message" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240611180156') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started PATCH "/tasks%0A" for ::1 at 2024-06-11 15:09:54 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [PATCH] "/tasks%0A"):
+  
+Started PATCH "/tasks" for ::1 at 2024-06-11 15:10:34 -0300
+  
+ActionController::RoutingError (No route matches [PATCH] "/tasks"):
+  
+Started GET "/tasks" for ::1 at 2024-06-11 15:10:49 -0300
+Processing by TasksController#index as HTML
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 26ms (Views: 1.3ms | ActiveRecord: 0.9ms | Allocations: 11382)
+
+
+Started GET "/favicon.ico" for ::1 at 2024-06-11 15:10:49 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["description", "Faça uma caminhada de 30 minutos"], ["message", "Mantenha-se ativo e saudável!"], ["created_at", "2024-06-11 18:11:49.588122"], ["updated_at", "2024-06-11 18:11:49.588122"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+Started PATCH "/tasks" for ::1 at 2024-06-11 15:12:07 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [PATCH] "/tasks"):
+  
+Started GET "/tasks" for ::1 at 2024-06-11 15:12:14 -0300
+Processing by TasksController#index as HTML
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 26ms (Views: 11.4ms | ActiveRecord: 1.5ms | Allocations: 17515)
+
+
+Started PATCH "/tasks" for ::1 at 2024-06-11 15:27:35 -0300
+  
+ActionController::RoutingError (No route matches [PATCH] "/tasks"):
+  
+Started PATCH "/tasks/1" for ::1 at 2024-06-11 15:27:40 -0300
+Processing by TasksController#update as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:49:in `set_task'
+Completed 400 Bad Request in 13ms (ActiveRecord: 1.2ms | Allocations: 2699)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: task):
+  
+app/controllers/tasks_controller.rb:54:in `task_params'
+app/controllers/tasks_controller.rb:34:in `update'
+Started GET "/tasks" for ::1 at 2024-06-11 15:38:31 -0300
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 1.1ms | Allocations: 874)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Destroy (0.7ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = ?[0m  [["id", 1]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (1.3ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["description", "Quo non veniam dolore architecto necessitatibus."], ["message", "But poets have been mysteriously silent on the subject of cheesethey can also age quite well in ripening cellars wherebut poets have been mysteriously silent on the subject of cheese."], ["created_at", "2024-06-11 19:25:09.817884"], ["updated_at", "2024-06-11 19:25:09.817884"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.8ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["description", "Exercitationem numquam vero nihil laboriosam delectus amet dolor."], ["message", "Salt, pepper, mustard and vinegarso cute but cheesygarlic cheese biscuits."], ["created_at", "2024-06-11 19:25:09.821299"], ["updated_at", "2024-06-11 19:25:09.821299"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (11.9ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["description", "Odio ducimus voluptate maxime maiores pariatur sit."], ["message", "It is blue sky thinkingit is blue sky thinking- tongue in cheek."], ["created_at", "2024-06-11 19:25:09.823604"], ["updated_at", "2024-06-11 19:25:09.823604"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.7ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["description", "Aperiam voluptatem omnis quis ad debitis est suscipit."], ["message", "And wrap blue cheeses all over as mould spores spread readilygarlic cheese biscuitsteam cheesy says hi."], ["created_at", "2024-06-11 19:25:09.837041"], ["updated_at", "2024-06-11 19:25:09.837041"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.7ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["description", "Qui eveniet accusantium aliquam voluptates distinctio."], ["message", "10 grilled cheese sandwiches you should try immediately withdouble dutch orblue fungi in cream."], ["created_at", "2024-06-11 19:25:09.839684"], ["updated_at", "2024-06-11 19:25:09.839684"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.7ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["description", "Aspernatur deserunt eius aliquid reiciendis dolorum exercitationem."], ["message", "Wash, rinse, repeatthe milky way ofa good alternative to cheesecloth."], ["created_at", "2024-06-11 19:25:09.841798"], ["updated_at", "2024-06-11 19:25:09.841798"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.7ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["description", "Iste repellat dolore dolores ratione consequuntur."], ["message", "Salt, pepper, mustard and vinegarSheridans Cheesemongersa good alternative to cheesecloth."], ["created_at", "2024-06-11 19:25:09.844400"], ["updated_at", "2024-06-11 19:25:09.844400"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.7ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["description", "Id molestias nam repellendus similique odit facere."], ["message", "Cut the cheesea good alternative to cheeseclothbut don't you agree? It is no use crying over spilled milk."], ["created_at", "2024-06-11 19:25:09.846509"], ["updated_at", "2024-06-11 19:25:09.846509"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.8ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["description", "Rem nam accusamus et deleniti ad."], ["message", "Until the wheels form a white coat of penicillium mouldsthe moon is made of green cheese andthe early bird may get the worm, but the second mouse gets the cheese in the trap."], ["created_at", "2024-06-11 19:25:09.850048"], ["updated_at", "2024-06-11 19:25:09.850048"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.7ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["description", "Doloribus rerum aliquid corrupti ratione inventore ad consequatur."], ["message", "Team cheesy says hiwith Dutch courageseparate the curds from the wey."], ["created_at", "2024-06-11 19:25:09.852307"], ["updated_at", "2024-06-11 19:25:09.852307"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/tasks" for ::1 at 2024-06-11 16:31:48 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 27ms (Views: 12.1ms | ActiveRecord: 1.4ms | Allocations: 18065)
+
+
+Started GET "/tasks" for ::1 at 2024-06-12 08:47:26 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 53ms (Views: 22.2ms | ActiveRecord: 3.1ms | Allocations: 18065)
+
+
+  [1m[36mTask Delete All (6.0ms)[0m  [1m[31mDELETE FROM "tasks"[0m
+Started GET "/tasks" for ::1 at 2024-06-12 08:50:43 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 26ms (Views: 0.9ms | ActiveRecord: 2.2ms | Allocations: 8928)
+
+
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (1.4ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["description", "Leia um artigo sobre um tema que você não conhece"], ["message", "A busca pelo conhecimento é a chave para a sabedoria."], ["created_at", "2024-06-12 12:02:36.847731"], ["updated_at", "2024-06-12 12:02:36.847731"]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (1.5ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["description", "Medite por 10 minutos"], ["message", "Acalme sua mente e encontre clareza no silêncio"], ["created_at", "2024-06-12 12:03:49.907576"], ["updated_at", "2024-06-12 12:03:49.907576"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (1.3ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["description", "Escreva um parágrafo sobre seu dia"], ["message", "Refletir sobre suas experiências ajuda a entender melhor suas emoções"], ["created_at", "2024-06-12 12:04:57.628996"], ["updated_at", "2024-06-12 12:04:57.628996"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (1.7ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["description", "Faça uma lista de três coisas pelas quais você é grato"], ["message", "A gratidão transforma o que temos em suficiente."], ["created_at", "2024-06-12 12:06:15.323317"], ["updated_at", "2024-06-12 12:06:15.323317"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (1.3ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["description", "Desafie-se a aprender uma nova palavra"], ["message", "Expandir seu vocabulário é expandir sua mente."], ["created_at", "2024-06-12 12:07:27.024114"], ["updated_at", "2024-06-12 12:07:27.024114"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (1.3ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["description", "Prepare uma refeição saudável"], ["message", "Nutrir seu corpo é o primeiro passo para nutrir sua alma."], ["created_at", "2024-06-12 12:08:39.098760"], ["updated_at", "2024-06-12 12:08:39.098760"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (1.4ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["description", "Realize um ato de bondade aleatório"], ["message", "A gentileza é a linguagem que o surdo pode ouvir e o cego pode ver."], ["created_at", "2024-06-12 12:09:41.857563"], ["updated_at", "2024-06-12 12:09:41.857563"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/tasks" for ::1 at 2024-06-12 09:18:32 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TasksController#index as HTML
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 42ms (Views: 20.0ms | ActiveRecord: 2.2ms | Allocations: 17882)
+
+
+Started GET "/favicon.ico" for ::1 at 2024-06-12 09:18:32 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/tasks" for ::1 at 2024-06-12 10:31:45 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TasksController#index as HTML
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 26ms (Views: 11.3ms | ActiveRecord: 1.4ms | Allocations: 17882)
+
+
+Started GET "/tasks" for ::1 at 2024-06-12 11:33:51 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 30ms (Views: 13.6ms | ActiveRecord: 1.8ms | Allocations: 17885)
+
+
+Started GET "/tasks" for ::1 at 2024-06-12 13:41:55 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 28ms (Views: 13.8ms | ActiveRecord: 1.5ms | Allocations: 17891)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2024-06-12 13:48:56 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 28ms (Views: 13.3ms | ActiveRecord: 1.4ms | Allocations: 17886)
+
+
+Started GET "/tasks" for 192.168.8.159 at 2024-06-12 13:49:45 -0300
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.1ms | Allocations: 975)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-12 13:50:09 -0300
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 8ms (Views: 7.6ms | ActiveRecord: 0.3ms | Allocations: 972)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-12 13:56:13 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (3.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 10ms (Views: 4.6ms | ActiveRecord: 5.0ms | Allocations: 1245)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-12 13:57:07 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 11ms (Views: 10.5ms | ActiveRecord: 0.4ms | Allocations: 971)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-12 13:57:46 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 959)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-12 14:00:26 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.2ms | Allocations: 959)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-12 14:01:44 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 30ms (Views: 29.7ms | ActiveRecord: 0.3ms | Allocations: 961)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-12 14:03:28 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.3ms | Allocations: 960)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-12 14:13:50 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (3.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 14ms (Views: 9.0ms | ActiveRecord: 4.9ms | Allocations: 1233)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-12 14:24:56 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (3.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 11ms (Views: 5.7ms | ActiveRecord: 4.8ms | Allocations: 1231)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-12 14:31:24 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (3.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 10ms (Views: 4.2ms | ActiveRecord: 5.6ms | Allocations: 1232)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-12 14:37:03 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (3.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 10ms (Views: 4.3ms | ActiveRecord: 5.5ms | Allocations: 1232)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-12 14:38:07 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.2ms | Allocations: 960)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-12 15:39:48 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (5.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 15ms (Views: 4.7ms | ActiveRecord: 9.2ms | Allocations: 1231)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-12 15:41:05 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 960)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-12 15:42:12 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.1ms | Allocations: 960)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-12 15:45:06 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.2ms | Allocations: 960)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-12 15:53:39 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (3.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 10ms (Views: 4.3ms | ActiveRecord: 5.6ms | Allocations: 1231)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-12 16:50:48 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (3.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 9ms (Views: 3.8ms | ActiveRecord: 5.1ms | Allocations: 1231)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-12 16:51:48 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 9ms (Views: 8.6ms | ActiveRecord: 0.3ms | Allocations: 960)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-12 16:54:06 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.1ms | Allocations: 961)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-12 17:05:16 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (2.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 7ms (Views: 3.2ms | ActiveRecord: 3.7ms | Allocations: 1231)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-12 17:24:14 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (3.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 9ms (Views: 3.9ms | ActiveRecord: 5.0ms | Allocations: 1232)
+
+
+Started GET "/tasks" for 192.168.8.159 at 2024-06-13 08:23:25 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 30ms (Views: 13.2ms | ActiveRecord: 1.6ms | Allocations: 17885)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-13 08:24:25 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 976)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-13 08:59:52 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (3.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 11ms (Views: 4.5ms | ActiveRecord: 5.4ms | Allocations: 1243)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-13 09:00:59 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.3ms | Allocations: 971)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-13 09:08:23 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (3.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 10ms (Views: 4.5ms | ActiveRecord: 4.6ms | Allocations: 1243)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-13 09:11:01 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 5ms (Views: 4.8ms | ActiveRecord: 0.2ms | Allocations: 959)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-13 09:11:48 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.2ms | Allocations: 959)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-13 09:12:47 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 35ms (Views: 34.0ms | ActiveRecord: 0.2ms | Allocations: 961)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-13 09:14:20 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.2ms | Allocations: 960)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-13 09:14:35 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.2ms | Allocations: 960)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-13 09:14:53 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 6ms (Views: 5.7ms | ActiveRecord: 0.3ms | Allocations: 961)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-13 09:18:10 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 5ms (Views: 4.8ms | ActiveRecord: 0.2ms | Allocations: 960)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-13 09:20:09 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.2ms | Allocations: 960)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-13 09:21:02 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.3ms | Allocations: 960)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-13 09:27:11 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (6.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 13ms (Views: 4.4ms | ActiveRecord: 8.4ms | Allocations: 1231)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-13 09:28:10 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.1ms | Allocations: 960)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-13 09:29:29 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.3ms | Allocations: 960)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-13 09:31:37 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 3ms (Views: 3.1ms | ActiveRecord: 0.2ms | Allocations: 960)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-13 09:32:26 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 11ms (Views: 9.5ms | ActiveRecord: 0.4ms | Allocations: 960)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-13 09:33:47 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.2ms | Allocations: 960)
+
+
+Started GET "/tasks" for 192.168.8.159 at 2024-06-13 09:35:29 -0300
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 961)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-13 09:37:02 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 28ms (Views: 27.7ms | ActiveRecord: 0.3ms | Allocations: 961)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-13 09:37:12 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.2ms | Allocations: 960)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-13 09:38:48 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 0.4ms | Allocations: 960)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-13 09:41:20 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 961)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-13 09:42:14 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.4ms | Allocations: 960)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-13 09:42:34 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 5ms (Views: 4.8ms | ActiveRecord: 0.2ms | Allocations: 960)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-13 09:44:33 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 31ms (Views: 14.8ms | ActiveRecord: 1.3ms | Allocations: 17884)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-13 10:05:27 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (1.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 1.8ms | Allocations: 1246)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-13 10:11:20 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (3.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 9ms (Views: 3.8ms | ActiveRecord: 4.5ms | Allocations: 1243)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-17 10:12:09 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 26ms (Views: 11.2ms | ActiveRecord: 1.5ms | Allocations: 17887)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2024-06-17 10:14:14 -0300
+Processing by TasksController#index as HTML
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 2ms (Views: 2.1ms | ActiveRecord: 0.1ms | Allocations: 975)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2024-06-17 10:14:14 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/tasks" for 127.0.0.1 at 2024-06-17 10:14:52 -0300
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.2ms | Allocations: 972)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2024-06-17 11:03:41 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 24ms (Views: 10.8ms | ActiveRecord: 1.5ms | Allocations: 17929)
+
+
