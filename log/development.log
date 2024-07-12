@@ -601,3 +601,54 @@ Processing by TasksController#index as */*
 Completed 200 OK in 24ms (Views: 10.8ms | ActiveRecord: 1.5ms | Allocations: 17929)
 
 
+Started GET "/tasks" for 127.0.0.1 at 2024-06-18 15:16:10 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 40ms (Views: 11.9ms | ActiveRecord: 1.5ms | Allocations: 17885)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-19 11:32:31 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 42ms (Views: 13.1ms | ActiveRecord: 1.4ms | Allocations: 17884)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-19 11:33:53 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 9ms (Views: 8.2ms | ActiveRecord: 0.2ms | Allocations: 976)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-19 11:36:00 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 14ms (Views: 13.0ms | ActiveRecord: 0.3ms | Allocations: 972)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-19 11:37:56 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 15ms (Views: 14.1ms | ActiveRecord: 0.3ms | Allocations: 973)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-19 11:43:15 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (3.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 16ms (Views: 11.7ms | ActiveRecord: 3.3ms | Allocations: 972)
+
+
+Started GET "/tasks" for 192.168.8.44 at 2024-06-19 11:51:01 -0300
+Processing by TasksController#index as JSON
+  [1m[36mTask Load (6.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:13:in `index'
+Completed 200 OK in 20ms (Views: 8.5ms | ActiveRecord: 11.1ms | Allocations: 1232)
+
+
